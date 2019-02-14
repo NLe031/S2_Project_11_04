@@ -1,3 +1,4 @@
+"use strict";
 /*
    New Perspectives on HTML5 and CSS3, 7th Edition
    Tutorial 9
@@ -10,9 +11,15 @@
    Filename:   ph_clock.js     
 
 */
-
-
-
+//Global variable to test clock
+var minsLeft = 0;
+var secsLeft = 15;
+var timeLeft = (minsLeft * 60 + secsLeft);
+//Function used to countdown the order time.
+function countdown() {
+    Math.floor(timeLeft / 60);
+    secsLeft === timeLeft - 60 * minsLeft;
+}
 
 
 
@@ -34,3 +41,9 @@ function addLeadingZero(num) {
     var numStr = (num < 10) ? ("0" + num) : "" + num;
     return numStr;
 }
+//Used to display the timer and to call the checkTimer function
+var minsString = addLeadingZero(minsLeft);
+var secsString = addLeadingZero(secsLeft);
+document.getElementById("minutes").innerHTML = minsString;
+document.getElementById("seconds").innerHTML = secsString;
+checkTimer();
